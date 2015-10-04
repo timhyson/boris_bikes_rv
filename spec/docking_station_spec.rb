@@ -10,7 +10,7 @@ describe DockingStation do
     it 'can be set at initialization' do
       random_number = rand(1..100)
       docking_station = DockingStation.new(random_number)
-      expect(subject.capacity).to eq(random_number)
+      expect(docking_station.capacity).to eq(random_number)
     end
 
     it 'can have capacity updated' do
