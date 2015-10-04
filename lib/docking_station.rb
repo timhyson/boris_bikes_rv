@@ -1,14 +1,8 @@
 require_relative 'bike'
+require_relative 'bike_container'
 
 class DockingStation
-  DEFAULT_CAPACITY = 20
-
-  attr_accessor :capacity
-
-  def initialize(capacity = DEFAULT_CAPACITY)
-    @bikes = []
-    @capacity = capacity
-  end
+  include BikeContainer
 
   def release_bike
     select_working_bikes
@@ -23,17 +17,8 @@ class DockingStation
 
   private
 
-  attr_reader :bikes
-
-  def full?
-    bikes.count >= capacity
-  end
-
-  def empty?
-    bikes.empty?
-  end
-
   def select_working_bikes
     @working_bikes = @bikes.select{ |bike| bike.working? }
   end
+
 end

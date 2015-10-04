@@ -1,4 +1,5 @@
 require 'docking_station'
+require 'support/shared_examples_for_bike_container'
 
 describe DockingStation do
 
@@ -7,16 +8,16 @@ describe DockingStation do
       expect(subject.capacity).to eq(DockingStation::DEFAULT_CAPACITY)
     end
 
-    it 'can be set at initialization' do
-      random_number = rand(1..100)
-      docking_station = DockingStation.new(random_number)
-      expect(docking_station.capacity).to eq(random_number)
+    it 'can be overriden on initialize' do
+      random_capacity = Random.rand(100)
+      docking_station = DockingStation.new(random_capacity)
+      expect(docking_station.capacity).to eq(random_capacity)
     end
 
     it 'can have capacity updated' do
-      random_number = rand(1..100)
-      subject.capacity = random_number
-      expect(subject.capacity).to eq(random_number)
+      random_capacity = Random.rand(100)
+      subject.capacity = random_capacity
+      expect(subject.capacity).to eq(random_capacity)
     end
   end
 
@@ -55,4 +56,5 @@ describe DockingStation do
     end
   end
 
+  it_behaves_like BikeContainer
 end
