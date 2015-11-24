@@ -9,9 +9,8 @@ describe Bike do
   end
 
   it 'can be reported broken' do
-    bike = Bike.new
-    bike.report_broken
-    expect(bike.broken).to be(true)
+    subject.report_broken
+    expect(subject.broken).to be(true)
   end
 
 end
